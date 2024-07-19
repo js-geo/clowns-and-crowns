@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+---
+
+## Noteworthy tips
+
+- try not to reach people that are too far gone, rather play with a swaying friend
+- try to insert topics w/ common ground, e.g. free education or healthcare
+- don't concentrate on the right wing only & don't add to "heavy" quotes
+- crowdsourcing for new content would be helpful

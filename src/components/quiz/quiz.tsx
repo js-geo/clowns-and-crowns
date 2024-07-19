@@ -7,6 +7,7 @@ import { Button } from "../button/button";
 export type QuizProps = {
   questions: Array<{
     question: string;
+    subline?: string;
     answers: Array<string>;
     correctAnswer: number;
   }>;
@@ -56,9 +57,9 @@ export const Quiz: React.FC<QuizProps> = ({ questions }) => {
           </Button>
         </div>
       </dialog>
-      <div className=" mx-auto">
+      <div className="mx-auto">
         <Image
-          src="/cover.png"
+          src="/scholz-grumpy.png"
           alt="scholz with crown"
           width={200}
           height={200}
@@ -70,9 +71,7 @@ export const Quiz: React.FC<QuizProps> = ({ questions }) => {
         <h2 className="text-2xl font-bold">
           {questions[currentQuestion].question}
         </h2>
-        <p className="text-sm">
-          Test your knowledge with this trivia question.
-        </p>
+        <p className="text-sm">{questions[currentQuestion].subline}</p>
       </div>
 
       <div className="bg-white text-black rounded-3xl px-4 py-16 mt-auto">
