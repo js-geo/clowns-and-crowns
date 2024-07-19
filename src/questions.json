@@ -1,14 +1,15 @@
 {
   "questions": [
     {
-      "question": "Why did Scholz wear an eyepatch once?",
+      "question": "Why did german chancellor Olaf Scholz wear an eyepatch once?",
       "answers": [
         "He had an infection",
         "He had an accident while jogging",
         "He wants to become a pirate",
         "It was carneval"
       ],
-      "correctAnswer": 1
+      "correctAnswer": 1,
+      "image": "/scholz-grumpy.png"
     },
     {
       "question": "From which party comes the following quote:",
@@ -17,14 +18,8 @@
       "correctAnswer": 0
     },
     {
-      "question": "Who painted the Mona Lisa?",
-      "answers": [
-        "Vincent van Gogh",
-        "Pablo Picasso",
-        "Leonardo da Vinci",
-        "Michelangelo"
-      ],
-      "correctAnswer": 2
+      "question": "What happened on 9th of November 1989?",
+      "correctAnswer": "The Berlin Wall fell"
     }
   ]
 }
