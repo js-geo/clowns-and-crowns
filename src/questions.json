@@ -1,26 +1,33 @@
 [
   {
     "question": "Was kann man sich laut der Meinung eines Politikers einwerfen wie Smarties?",
-    "correctAnswer": 1,
-    "correctAnswerString": "Die Pille",
-    "answers": ["Rosenkohl", "Die Pille", "ADHS-Medikamente", "Schlaftabletten"]
+    "correctAnswer": "Die Pille",
+    "answers": [
+      "Rosenkohl",
+      "Die Pille",
+      "ADHS-Medikamente",
+      "Schlaftabletten"
+    ],
+    "person": "Jens Spahn",
+    "background": "Dieser Satz stammt von Jens Spahn."
   },
   {
     "question": "Vervollständige den Satz: 'Hol mir mal...'",
-    "correctAnswer": 3,
-    "correctAnswerString": "Ne Flasche Bier, sonst streik' ich hier!",
+    "correctAnswer": "Ne Flasche Bier, sonst streik' ich hier!",
     "answers": [
       "Meinen Rollkoffer, ich muss hier weg!",
       "Ne Kanne Kaffee, sonst streik ich hier!",
       "Die Merkel her!",
       "Ne Flasche Bier, sonst streik' ich hier!"
-    ]
+    ],
+    "background": "Dieser Satz stammt von Schröder.",
+    "person": "Schröder"
   },
   {
     "question": "Von welcher Partei stammt das folgende Zitat:",
     "subline": "'Nach dem furchtbaren politischen, wirtschaftlichen und sozialen Zusammenbruch als Folge einer verbrecherischen Machtpolitik kann nur eine Neuordnung von Grund aus erfolgen. Inhalt und Ziel dieser sozialen und wirtschaftlichen Neuordnung kann nicht mehr als das kapitalistische Gewinn- und Machtstreben, sondern nur das Wohlergehen unseres Volkes sein.'",
-    "correctAnswerString": "CDU",
+    "correctAnswer": "CDU",
     "answers": ["CDU", "Die Grünen", "FDP", "AfD"],
-    "correctAnswer": 0
+    "background": "Dieses Zitat stammt aus dem Jahr 1947."
   }
 ]

@@ -11,9 +11,11 @@ export type Question = {
   question: string;
   subline?: string;
   answers?: Array<string>;
-  correctAnswer: number | string;
+  correctAnswer: string;
   image?: string;
   answer?: string;
+  background?: string;
+  person?: string;
 };
 
 export type QuizProps = {
@@ -24,7 +26,7 @@ export type QuizProps = {
 
 const Question: React.FC<
   Question & {
-    handleAnswerClick: (index?: number, answer?: string) => void;
+    handleAnswerClick: (text: string) => void;
   }
 > = ({ question, subline, answers, handleAnswerClick, image, answer }) => {
   const [text, setText] = useState("");
@@ -32,6 +34,10 @@ const Question: React.FC<
   const router = useRouter();
 
   const id = new URL(window.location.href).pathname.split("/")[3];
+
+  const updatedAnswers = answers && answer ? [...answers, answer] : undefined;
+
+  const answersFinal = updatedAnswers?.sort(() => Math.random() - 0.5);
 
   return (
     <div>
@@ -61,16 +67,16 @@ const Question: React.FC<
 
       <div className="bg-white text-black rounded-3xl px-6 w-full">
         <div className="flex flex-col justify-center gap-3 ">
-          {answers && answer ? (
+          {answersFinal ? (
             <>
               <span className="text-[#A5A5A5]">
                 Wähle die richtige Antwort aus
               </span>
-              {[...answers, answer].map((answer, index) => (
+              {answersFinal.map((answer, index) => (
                 <Button
                   variant="secondary"
                   key={answer}
-                  onClick={() => handleAnswerClick(index)}
+                  onClick={() => handleAnswerClick(answersFinal[index])}
                 >
                   {answer}
                 </Button>
@@ -108,17 +114,12 @@ const Question: React.FC<
 };
 
 export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState(false);
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
 
-  const handleAnswerClick = (index?: number, text?: string) => {
-    if (index === question.correctAnswer) {
-      setIsCorrect(true);
-    }
-
+  const handleAnswerClick = (text: string) => {
     if (text === question.correctAnswer) {
       setIsCorrect(true);
     }
@@ -130,14 +131,6 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
     router.push(`/game/question/${(parseInt(id) + 1).toString()}`);
   };
 
-  if (currentQuestion === -1) {
-    return (
-      <div className="w-screen flex justify-center items-center">
-        Out of questions!
-      </div>
-    );
-  }
-
   return (
     <>
       <Feedback
@@ -148,7 +141,10 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
           setIsCorrect(false);
           handleNextQuestion();
         }}
-      />
+        person={question.person}
+      >
+        {question.background}
+      </Feedback>
       <div className="">
         <Question
           question={question.question}
