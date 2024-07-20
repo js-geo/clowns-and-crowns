@@ -6,7 +6,7 @@ import { Button } from "../button/button";
 import { Feedback } from "../feedback/feedback";
 import router, { useRouter } from "next/navigation";
 
-type QuizQuestion = {
+export type Question = {
   question: string;
   subline?: string;
   answers?: Array<string>;
@@ -16,19 +16,21 @@ type QuizQuestion = {
 };
 
 export type QuizProps = {
-  questions: Array<QuizQuestion>;
+  question: Question;
   answer?: string;
   id: string;
 };
 
-const QuizQuestion: React.FC<
-  QuizQuestion & {
+const Question: React.FC<
+  Question & {
     handleAnswerClick: (index?: number, answer?: string) => void;
   }
 > = ({ question, subline, answers, handleAnswerClick, image, answer }) => {
   const [text, setText] = useState("");
 
   const router = useRouter();
+
+  const id = new URL(window.location.href).pathname.split("/")[3];
 
   return (
     <div className="flex flex-col gap-8 items-center h-full p-4">
@@ -65,8 +67,8 @@ const QuizQuestion: React.FC<
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                handleAnswerClick(undefined, text);
-                router.push(`/game/answer?answer=${text}`);
+                // handleAnswerClick(undefined, text);
+                router.push(`/game/answer/${id}/?answer=${text}`);
               }}
               className="flex flex-col gap-6"
             >
@@ -93,7 +95,7 @@ const QuizQuestion: React.FC<
   );
 };
 
-export const Quiz: React.FC<QuizProps> = ({ questions, answer, id }) => {
+export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState(false);
   const [open, setOpen] = useState(false);
@@ -101,11 +103,11 @@ export const Quiz: React.FC<QuizProps> = ({ questions, answer, id }) => {
   const router = useRouter();
 
   const handleAnswerClick = (index?: number, text?: string) => {
-    if (index === questions[currentQuestion].correctAnswer) {
+    if (index === question.correctAnswer) {
       setIsCorrect(true);
     }
 
-    if (text === questions[currentQuestion].correctAnswer) {
+    if (text === question.correctAnswer) {
       setIsCorrect(true);
     }
 
@@ -113,12 +115,7 @@ export const Quiz: React.FC<QuizProps> = ({ questions, answer, id }) => {
   };
 
   const handleNextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-      router.push("/game/question");
-    }
-
-    setCurrentQuestion(-1);
+    router.push(`/game/question/${(parseInt(id) + 1).toString()}`);
   };
 
   if (currentQuestion === -1) {
@@ -141,26 +138,15 @@ export const Quiz: React.FC<QuizProps> = ({ questions, answer, id }) => {
         }}
       />
 
-      {answer ? (
-        <QuizQuestion
-          question={questions[currentQuestion].question}
-          subline={questions[currentQuestion].subline}
-          answers={questions[currentQuestion].answers}
-          answer={answer}
-          handleAnswerClick={handleAnswerClick}
-          image={questions[currentQuestion].image}
-          correctAnswer={questions[currentQuestion].correctAnswer}
-        />
-      ) : (
-        <QuizQuestion
-          question={questions[currentQuestion].question}
-          subline={questions[currentQuestion].subline}
-          answers={questions[currentQuestion].answers}
-          handleAnswerClick={handleAnswerClick}
-          image={questions[currentQuestion].image}
-          correctAnswer={questions[currentQuestion].correctAnswer}
-        />
-      )}
+      <Question
+        question={question.question}
+        subline={question.subline}
+        answers={question.answers}
+        answer={answer}
+        handleAnswerClick={handleAnswerClick}
+        image={question.image}
+        correctAnswer={question.correctAnswer}
+      />
     </div>
   );
 };

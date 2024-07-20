@@ -7,7 +7,7 @@ export default function Home() {
     <main className="w-screen h-screen flex justify-center items-center">
       <Link
         className="border border-white rounded-lg p-4"
-        href="/game/question/1"
+        href="/game/question/0"
       >
         Start a new game
       </Link>

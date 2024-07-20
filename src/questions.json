@@ -3,6 +3,7 @@
     {
       "question": "Was kann man sich laut der Meinung eines Politikers einwerfen wie Smarties?",
       "correctAnswer": 1,
+      "correctAnswerString": "Die Pille",
       "answers": [
         "Rosenkohl",
         "Die Pille",
@@ -13,12 +14,20 @@
     {
       "question": "Vervollständige den Satz: 'Hol mir mal...'",
       "correctAnswer": 3,
+      "correctAnswerString": "Ne Flasche Bier, sonst streik' ich hier!",
       "answers": [
-        "Meinen Rollkoffer!",
+        "Meinen Rollkoffer, ich muss hier weg!",
         "Ne Kanne Kaffee, sonst streik ich hier!",
-        "c",
+        "Die Merkel her!",
         "Ne Flasche Bier, sonst streik' ich hier!"
       ]
+    },
+    {
+      "question": "From which party comes the following quote:",
+      "subline": "'Nach dem furchtbaren politischen, wirtschaftlichen und sozialen Zusammenbruch als Folge einer verbrecherischen Machtpolitik kann nur eine Neuordnung von Grund aus erfolgen. Inhalt und Ziel dieser sozialen und wirtschaftlichen Neuordnung kann nicht mehr als das kapitalistische Gewinn- und Machtstreben, sondern nur das Wohlergehen unseres Volkes sein.'",
+      "correctAnswerString": "CDU",
+      "answers": ["CDU", "Die Grünen", "FDP", "AfD"],
+      "correctAnswer": 0
     }
   ]
 }

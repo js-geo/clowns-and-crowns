@@ -1,17 +1,24 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Quiz } from "../quiz/quiz";
+import { Question, Quiz } from "../quiz/quiz";
 import { questions } from "./../../questions.json";
+import { getQuestion } from "@/scripts/db";
 
-export const Answer = ({ id }: { id: string }) => {
+export const Answer = ({
+  question,
+  id,
+}: {
+  question: Question;
+  id: string;
+}) => {
   const searchParams = useSearchParams();
 
   const answer = searchParams.get("answer");
 
   return (
     <>
-      <Quiz questions={questions} answer={answer ?? ""} id={id} />
+      <Quiz question={question} answer={answer ?? ""} id={id} />
     </>
   );
 };
