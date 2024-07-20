@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "../button/button";
 import { Feedback } from "../feedback/feedback";
+import router, { useRouter } from "next/navigation";
 
 type QuizQuestion = {
   question: string;
@@ -11,18 +12,23 @@ type QuizQuestion = {
   answers?: Array<string>;
   correctAnswer: number | string;
   image?: string;
+  answer?: string;
 };
 
 export type QuizProps = {
   questions: Array<QuizQuestion>;
+  answer?: string;
+  id: string;
 };
 
 const QuizQuestion: React.FC<
   QuizQuestion & {
     handleAnswerClick: (index?: number, answer?: string) => void;
   }
-> = ({ question, subline, answers, handleAnswerClick, image }) => {
+> = ({ question, subline, answers, handleAnswerClick, image, answer }) => {
   const [text, setText] = useState("");
+
+  const router = useRouter();
 
   return (
     <div className="flex flex-col gap-8 items-center h-full p-4">
@@ -45,8 +51,8 @@ const QuizQuestion: React.FC<
 
       <div className="bg-white text-black rounded-3xl px-4 py-16 w-full mt-auto">
         <div className="flex flex-col gap-4 ">
-          {answers ? (
-            answers.map((answer, index) => (
+          {answers && answer ? (
+            [...answers, answer].map((answer, index) => (
               <Button
                 variant="primary"
                 key={answer}
@@ -60,6 +66,7 @@ const QuizQuestion: React.FC<
               onSubmit={(event) => {
                 event.preventDefault();
                 handleAnswerClick(undefined, text);
+                router.push(`/game/answer?answer=${text}`);
               }}
               className="flex flex-col gap-6"
             >
@@ -67,7 +74,7 @@ const QuizQuestion: React.FC<
                 Answer
               </label>
               <textarea
-                className="border border-[#695AE0"
+                className="border border-[#695AE0 focus:outline-[#695AE0] rounded-lg p-4"
                 placeholder={"Type your answer here..."}
                 id={question}
                 value={text}
@@ -86,10 +93,12 @@ const QuizQuestion: React.FC<
   );
 };
 
-export const Quiz: React.FC<QuizProps> = ({ questions }) => {
+export const Quiz: React.FC<QuizProps> = ({ questions, answer, id }) => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const router = useRouter();
 
   const handleAnswerClick = (index?: number, text?: string) => {
     if (index === questions[currentQuestion].correctAnswer) {
@@ -106,10 +115,8 @@ export const Quiz: React.FC<QuizProps> = ({ questions }) => {
   const handleNextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      return;
+      router.push("/game/question");
     }
-
-    console.log("x");
 
     setCurrentQuestion(-1);
   };
@@ -134,14 +141,26 @@ export const Quiz: React.FC<QuizProps> = ({ questions }) => {
         }}
       />
 
-      <QuizQuestion
-        question={questions[currentQuestion].question}
-        subline={questions[currentQuestion].subline}
-        answers={questions[currentQuestion].answers}
-        handleAnswerClick={handleAnswerClick}
-        image={questions[currentQuestion].image}
-        correctAnswer={questions[currentQuestion].correctAnswer}
-      />
+      {answer ? (
+        <QuizQuestion
+          question={questions[currentQuestion].question}
+          subline={questions[currentQuestion].subline}
+          answers={questions[currentQuestion].answers}
+          answer={answer}
+          handleAnswerClick={handleAnswerClick}
+          image={questions[currentQuestion].image}
+          correctAnswer={questions[currentQuestion].correctAnswer}
+        />
+      ) : (
+        <QuizQuestion
+          question={questions[currentQuestion].question}
+          subline={questions[currentQuestion].subline}
+          answers={questions[currentQuestion].answers}
+          handleAnswerClick={handleAnswerClick}
+          image={questions[currentQuestion].image}
+          correctAnswer={questions[currentQuestion].correctAnswer}
+        />
+      )}
     </div>
   );
 };

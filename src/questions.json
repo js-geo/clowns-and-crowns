@@ -1,25 +1,24 @@
 {
   "questions": [
     {
-      "question": "Why did german chancellor Olaf Scholz wear an eyepatch once?",
-      "answers": [
-        "He had an infection",
-        "He had an accident while jogging",
-        "He wants to become a pirate",
-        "It was carneval"
-      ],
+      "question": "Was kann man sich laut der Meinung eines Politikers einwerfen wie Smarties?",
       "correctAnswer": 1,
-      "image": "/scholz-grumpy.png"
+      "answers": [
+        "Rosenkohl",
+        "Die Pille",
+        "ADHS-Medikamente",
+        "Schlaftabletten"
+      ]
     },
     {
-      "question": "From which party comes the following quote:",
-      "subline": "'Nach dem furchtbaren politischen, wirtschaftlichen und sozialen Zusammenbruch als Folge einer verbrecherischen Machtpolitik kann nur eine Neuordnung von Grund aus erfolgen. Inhalt und Ziel dieser sozialen und wirtschaftlichen Neuordnung kann nicht mehr als das kapitalistische Gewinn- und Machtstreben, sondern nur das Wohlergehen unseres Volkes sein.'",
-      "answers": ["CDU", "Die Grünen", "FDP", "AfD"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What happened on 9th of November 1989?",
-      "correctAnswer": "The Berlin Wall fell"
+      "question": "Vervollständige den Satz: 'Hol mir mal...'",
+      "correctAnswer": 3,
+      "answers": [
+        "Meinen Rollkoffer!",
+        "Ne Kanne Kaffee, sonst streik ich hier!",
+        "c",
+        "Ne Flasche Bier, sonst streik' ich hier!"
+      ]
     }
   ]
 }
