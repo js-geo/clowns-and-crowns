@@ -1,28 +1,29 @@
 import Image from "next/image";
 import { Button } from "../button/button";
 import { ComponentProps } from "react";
+import { Question } from "../quiz/quiz";
 
 export const Feedback: React.FC<
   ComponentProps<"dialog"> & {
     open: boolean;
     isCorrect: boolean;
     onClick: () => void;
-    person?: string;
+    question?: Question;
   }
-> = ({ open, isCorrect, onClick, children, person }) => {
+> = ({ open, isCorrect, onClick, children, question }) => {
   return (
     <dialog
       open={open}
       className="bg-white h-[calc(100vh-60px)] w-screen fixed top-[60px]"
     >
-      <div className="flex flex-col gap-4 h-full justify-center items-center">
-        <span className="font-bold text-4xl text-center px-6">
+      <div className="flex flex-col gap-4 h-full justify-center items-center px-6">
+        <span className="font-bold text-4xl text-center">
           {isCorrect ? (
             <>Du bist Champion der Demokratie!</>
           ) : (
             <>
-              {person ? (
-                <>{person} hat dich drangekriegt!</>
+              {question?.person ? (
+                <>{question.person} hat dich drangekriegt!</>
               ) : (
                 <>Das war leider falsch!</>
               )}
@@ -37,7 +38,9 @@ export const Feedback: React.FC<
             height={200}
           />
         )}
-        {children}
+        <div className="text-center">
+          {children} Die richtige Antwort ist {`"${question?.correctAnswer}"`}.
+        </div>
         <Button variant="primary" className="text-center" onClick={onClick}>
           Nächste Frage
         </Button>

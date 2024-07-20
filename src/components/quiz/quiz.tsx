@@ -48,7 +48,7 @@ const Question: React.FC<
         )}
       >
         <span className={twMerge("font-thin", !answer && "text-[#212C7B]")}>
-          Question
+          Frage
         </span>
         <h2 className="text-2xl font-bold py-4">{question}</h2>
         {subline && <p className="text-sm">{subline}</p>}
@@ -65,8 +65,8 @@ const Question: React.FC<
         </div>
       )}
 
-      <div className="bg-white text-black rounded-3xl px-6 w-full">
-        <div className="flex flex-col justify-center gap-3 ">
+      <div className="bg-white text-black rounded-3xl px-6 w-full absolute bottom-0 -z-10">
+        <div className="flex flex-col justify-center gap-3 mb-8">
           {answersFinal ? (
             <>
               <span className="text-[#A5A5A5]">
@@ -94,8 +94,8 @@ const Question: React.FC<
                 Answer
               </label>
               <textarea
-                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light"
-                placeholder={"Type your answer here..."}
+                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light h-[26rem]"
+                placeholder={"Füge hier deine Antwort ein..."}
                 id={question}
                 value={text}
                 onChange={(event) => {
@@ -103,7 +103,7 @@ const Question: React.FC<
                 }}
               ></textarea>
               <Button variant="primary" type="submit" className="my-8">
-                Submit
+                Absenden
               </Button>
             </form>
           )}
@@ -141,7 +141,7 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
           setIsCorrect(false);
           handleNextQuestion();
         }}
-        person={question.person}
+        question={question}
       >
         {question.background}
       </Feedback>
