@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "../button/button";
 import { Feedback } from "../feedback/feedback";
 import router, { useRouter } from "next/navigation";
+import { twMerge } from "tailwind-merge";
 
 export type Question = {
   question: string;
@@ -33,12 +34,19 @@ const Question: React.FC<
   const id = new URL(window.location.href).pathname.split("/")[3];
 
   return (
-    <div className="flex flex-col gap-8 items-center h-full p-4">
-      <div className=" text-center mt-auto">
-        <h2 className="text-2xl font-bold">{question}</h2>
-        <p className="text-sm">{subline}</p>
+    <div>
+      <div
+        className={twMerge(
+          "text-center my-16 pb-14 mx-6",
+          answer && "bg-[#3C50E1] px-6 py-9 text-white text-left rounded-[10px]"
+        )}
+      >
+        <span className={twMerge("font-thin", !answer && "text-[#212C7B]")}>
+          Question
+        </span>
+        <h2 className="text-2xl font-bold py-4">{question}</h2>
+        {subline && <p className="text-sm">{subline}</p>}
       </div>
-
       {image && (
         <div>
           <Image
@@ -51,32 +59,36 @@ const Question: React.FC<
         </div>
       )}
 
-      <div className="bg-white text-black rounded-3xl px-4 py-16 w-full mt-auto">
-        <div className="flex flex-col gap-4 ">
+      <div className="bg-white text-black rounded-3xl px-6 w-full">
+        <div className="flex flex-col justify-center gap-3 ">
           {answers && answer ? (
-            [...answers, answer].map((answer, index) => (
-              <Button
-                variant="primary"
-                key={answer}
-                onClick={() => handleAnswerClick(index)}
-              >
-                {answer}
-              </Button>
-            ))
+            <>
+              <span className="text-[#A5A5A5]">
+                Wähle die richtige Antwort aus
+              </span>
+              {[...answers, answer].map((answer, index) => (
+                <Button
+                  variant="secondary"
+                  key={answer}
+                  onClick={() => handleAnswerClick(index)}
+                >
+                  {answer}
+                </Button>
+              ))}
+            </>
           ) : (
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                // handleAnswerClick(undefined, text);
                 router.push(`/game/answer/${id}/?answer=${text}`);
               }}
-              className="flex flex-col gap-6"
+              className="flex flex-col"
             >
               <label htmlFor={question} className="sr-only">
                 Answer
               </label>
               <textarea
-                className="border border-[#695AE0 focus:outline-[#695AE0] rounded-lg p-4"
+                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light"
                 placeholder={"Type your answer here..."}
                 id={question}
                 value={text}
@@ -84,7 +96,7 @@ const Question: React.FC<
                   setText(event.target.value);
                 }}
               ></textarea>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" className="my-8">
                 Submit
               </Button>
             </form>
@@ -120,14 +132,14 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
 
   if (currentQuestion === -1) {
     return (
-      <div className="h-screen w-screen flex justify-center items-center">
+      <div className="w-screen flex justify-center items-center">
         Out of questions!
       </div>
     );
   }
 
   return (
-    <div className="w-screen h-screen">
+    <>
       <Feedback
         isCorrect={isCorrect}
         open={open}
@@ -137,16 +149,17 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
           handleNextQuestion();
         }}
       />
-
-      <Question
-        question={question.question}
-        subline={question.subline}
-        answers={question.answers}
-        answer={answer}
-        handleAnswerClick={handleAnswerClick}
-        image={question.image}
-        correctAnswer={question.correctAnswer}
-      />
-    </div>
+      <div className="">
+        <Question
+          question={question.question}
+          subline={question.subline}
+          answers={question.answers}
+          answer={answer}
+          handleAnswerClick={handleAnswerClick}
+          image={question.image}
+          correctAnswer={question.correctAnswer}
+        />
+      </div>
+    </>
   );
 };

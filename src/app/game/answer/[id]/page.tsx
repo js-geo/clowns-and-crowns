@@ -1,6 +1,3 @@
-import { Quiz } from "@/components/quiz/quiz";
-import { questions } from "./../../../../questions.json";
-import { useRouter } from "next/router";
 import { Answer as AnswerComponent } from "@/components/answer/answer";
 import { getQuestion } from "@/scripts/db";
 

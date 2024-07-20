@@ -7,24 +7,26 @@ export const Feedback: React.FC<{
   onClick: () => void;
 }> = ({ open, isCorrect, onClick }) => {
   return (
-    <dialog open={open} className="justify-center items-center h-full w-screen">
+    <dialog open={open} className="h-full w-screen">
       <div className="flex flex-col gap-4 h-full justify-center items-center">
+        <span className="font-bold text-4xl text-center px-6">
+          {isCorrect ? (
+            <>Du bist Champion der Demokratie!</>
+          ) : (
+            <>Thilo Sarazin hat dich drangekriegt!</>
+          )}
+        </span>
         {isCorrect && (
           <Image
-            src="/scholz-happy.png"
+            src="/thumbs-up.png"
             alt="scholz with crown"
             width={200}
             height={200}
-            className="rounded-lg shadow-md"
           />
         )}
-        {isCorrect ? "Right! 🎉" : "Wrong... 😔"}
-        <Button
-          variant="primary"
-          className="w-1/2 text-center"
-          onClick={onClick}
-        >
-          Close
+
+        <Button variant="primary" className="text-center" onClick={onClick}>
+          Nächste Frage
         </Button>
       </div>
     </dialog>

@@ -6,8 +6,9 @@ const buttonVariants = cva("", {
   variants: {
     variant: {
       primary:
-        "border border-[#695AE0] hover:text-white hover:bg-[#695AE0] hover:border-[#695AE0] text-[#695AE0]",
-      secondary: "bg-black text-white",
+        "text-white py-[0.625rem] px-[4.25rem] bg-[#3C50E1] rounded-[3rem]",
+      secondary:
+        "bg-[#F5F5F5] py-[20px] px-[24px] rounded-[10px] hover:text-[#3C50E1]",
     },
   },
 });
@@ -17,11 +18,7 @@ export const Button: React.FC<
 > = ({ variant, className, ...props }) => {
   return (
     <button
-      className={twMerge(
-        "w-full border rounded-xl py-2 text-left pl-4 ",
-        buttonVariants({ variant }),
-        className
-      )}
+      className={twMerge("", buttonVariants({ variant }), className)}
       {...props}
     />
   );
