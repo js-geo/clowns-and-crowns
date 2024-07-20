@@ -2,6 +2,8 @@
 
 import { ComponentProps } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import questions from "../../questions.json";
 
 const Hamburger = () => {
   return (
@@ -24,11 +26,18 @@ const Hamburger = () => {
 };
 
 export const Navbar: React.FC<ComponentProps<"div">> = () => {
+  const pathname = usePathname();
+
+  const id = pathname.split("/")[3];
+
+  const round =
+    parseInt(id) + 1 > questions.length ? undefined : parseInt(id) + 1;
+
   return (
     <div className="text-white px-6 py-3 flex flex-row justify-between items-center h-[3.75rem] bg-gradient-to-r from-[#212C7B] via-[#3C50E1] to-[#212C7B]">
       <Hamburger />
 
-      <>Runde 1 / 3</>
+      {round && <>Runde {round} / 3</>}
 
       <div className="text-black text-[10px] p-[6px] bg-white rounded-[20px] flex flex-row items-center gap-2">
         <Image
@@ -37,8 +46,8 @@ export const Navbar: React.FC<ComponentProps<"div">> = () => {
           width={30}
           height={30}
           className="rounded-full shadow-md max-h-[30px] object-cover"
-        />{" "}
-        1xp{" "}
+        />
+        1xp
         <svg
           width="14"
           height="14"
