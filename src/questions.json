@@ -1,33 +1,99 @@
 [
   {
     "question": "Was kann man sich laut der Meinung eines Politikers einwerfen wie Smarties?",
-    "correctAnswer": "Die Pille",
+    "correctAnswer": "Die 'Pille danach'",
     "answers": [
       "Rosenkohl",
-      "Die Pille",
+      "Die 'Pille danach'",
       "ADHS-Medikamente",
       "Schlaftabletten"
     ],
     "person": "Jens Spahn",
-    "background": "Dieser Satz stammt von Jens Spahn."
+    "background": "Dieser Satz stammt von Jens Spahn im Zusammenhang mit der Rezeptfreiheit für die 'Pille danach'."
   },
   {
     "question": "Vervollständige den Satz: 'Hol mir mal...'",
     "correctAnswer": "Ne Flasche Bier, sonst streik' ich hier!",
     "answers": [
       "Meinen Rollkoffer, ich muss hier weg!",
-      "Ne Kanne Kaffee, sonst streik ich hier!",
+      "Ne Kanne Kaffee, ich schlaf sonst ein!",
       "Die Merkel her!",
       "Ne Flasche Bier, sonst streik' ich hier!"
     ],
-    "background": "Dieser Satz stammt von Schröder.",
-    "person": "Schröder"
+    "background": "Dieser Satz stammt von Gerhard Schröder während dessen Zeit als Bundeskanzler.",
+    "person": "Gerhard Schröder"
   },
   {
     "question": "Von welcher Partei stammt das folgende Zitat:",
     "subline": "'Nach dem furchtbaren politischen, wirtschaftlichen und sozialen Zusammenbruch als Folge einer verbrecherischen Machtpolitik kann nur eine Neuordnung von Grund aus erfolgen. Inhalt und Ziel dieser sozialen und wirtschaftlichen Neuordnung kann nicht mehr als das kapitalistische Gewinn- und Machtstreben, sondern nur das Wohlergehen unseres Volkes sein.'",
     "correctAnswer": "CDU",
-    "answers": ["CDU", "Die Grünen", "FDP", "AfD"],
+    "answers": [
+      "CDU", 
+      "Die Grünen", 
+      "FDP", 
+      "AfD"
+    ],
     "background": "Dieses Zitat stammt aus dem Jahr 1947."
+  },
+  {
+    "question": "Vervollständige das folgende Zitat:",
+    "subline": "Zwei ... im Bett, das finde ich okay!",
+    "correctAnswer": "Schweine",
+    "answers": [
+      "Schweine", 
+      "Frauen", 
+      "Hunde", 
+      "Mahlzeiten"
+    ],
+    "background": "Bärbel Höhn (Bündnis 90/Die Grünen) zur Haltungsfläche von Schweinen.",
+    "person": "Bärbel Höhn"
+  },
+  {
+    "question": "Was ist die 'Berliner Waschmaschine'?",
+    "correctAnswer": "Das Bundeskanzleramts-Gebäude",
+    "answers": [
+      "Das Bundeskanzleramts-Gebäude", 
+      "Ein System zur Geldwäsche von Bestechungsgeldern für Politiker", 
+      "Ein Servicezentrum für Politiker in Berlin, das deren Wäsche wäscht", 
+      "Ein ironischer Begriff für den Saal, in dem der Bundestag tagt"
+    ],
+    "background": "'Waschmaschine' nennen die Berliner das weiße Gebäude des Bundeskanzleramts mit seiner runden Fensterfassade, das unter anderem das Kanzlerbüro und den Kabinettssaal beherbergt."
+  },
+  {
+    "question": "Vervollständige das folgende Zitat:",
+    "subline": "Wir haben wahrlich keinen Rechtsanspruch auf ... auf alle Ewigkeit.",
+    "correctAnswer": "Demokratie und soziale Marktwirtschaft",
+    "answers": [
+      "Demokratie und soziale Marktwirtschaft", 
+      "Freibier", 
+      "Rente", 
+      "politisches Asyl"
+    ],
+    "background": "Das Zitat stammt von Angela Merkel.",
+    "person": "Angela Merkel"
+  },
+  {
+    "question": "Vervollständige das folgende Zitat:",
+    "subline": "Die Dummheit von ... sollte niemals unterschätzt werden.",
+    "correctAnswer": "Regierungen",
+    "answers": [
+      "Regierungen", 
+      "Politikern", 
+      "Nazis", 
+      "Menschen"
+    ],
+    "background": "Das Zitat stammt von Helmut Schmidt.",
+    "person": "Helmut Schmidt"
+  },
+  {
+    "question": "Was darf man in der Wahlkabine nicht tun?",
+    "correctAnswer": "Selfies machen",
+    "answers": [
+      "Selfies machen", 
+      "Singen", 
+      "Den Stimmzettel absichtlich ungültig machen", 
+      "Schlafen"
+    ],
+    "background": "Seit 2017 sind Selfies in der Wahlkabine verboten. Wird man dabei erwischt, kann man sein Wahlrecht für die aktuelle Wahl verlieren."
   }
 ]
