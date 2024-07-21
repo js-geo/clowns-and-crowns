@@ -12,10 +12,7 @@ export const Feedback: React.FC<
   }
 > = ({ open, isCorrect, onClick, children, question }) => {
   return (
-    <dialog
-      open={open}
-      className="bg-white h-[calc(100vh-60px)] w-screen fixed top-[60px]"
-    >
+    <dialog open={open} className="bg-white h-[100vh] w-screen">
       <div className="flex flex-col gap-8 h-full justify-center items-center px-6 mt-8">
         <span className="font-bold text-4xl text-center">
           {isCorrect ? (
@@ -38,8 +35,8 @@ export const Feedback: React.FC<
             height={200}
           />
         )}
-        <div className="text-left border-2 border-[#3AB795] drop-shadow-md p-6 pt-12 rounded-xl bg-white">
-          <div className="absolute -top-2 flex flex-row text-[#3AB795]">
+        <div className="text-left border-2 border-[#3AB795] drop-shadow-md p-6 pt-0 rounded-xl bg-white">
+          <div className="flex flex-row text-[#3AB795]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="36"
@@ -63,7 +60,7 @@ export const Feedback: React.FC<
         </div>
         <Button
           variant="primary"
-          className="text-center mt-auto mb-16"
+          className="text-center mb-16"
           onClick={onClick}
         >
           Nächste Frage

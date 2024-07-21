@@ -37,7 +37,11 @@ export const Navbar: React.FC<ComponentProps<"div">> = () => {
     <div className="text-white px-6 py-3 flex flex-row justify-between items-center h-[3.75rem] bg-gradient-to-r from-[#212C7B] via-[#3C50E1] to-[#212C7B]">
       <Hamburger />
 
-      {round && <>Runde {round} / 3</>}
+      {round && (
+        <>
+          Runde {round}/{questions.length}
+        </>
+      )}
 
       <div className="text-black text-[10px] p-[6px] bg-white rounded-[20px] flex flex-row items-center gap-2">
         <Image

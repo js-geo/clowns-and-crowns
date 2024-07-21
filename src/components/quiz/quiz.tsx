@@ -71,7 +71,7 @@ const Question: React.FC<
       {answersFinal && (
         <div className="flex flex-col items-center">
           <svg
-            className="size-20"
+            className="size-20 my-8"
             viewBox="0 0 42 43"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ const Question: React.FC<
         </div>
       )}
 
-      <div className="bg-white text-black rounded-3xl px-6 w-full absolute bottom-0 -z-10">
+      <div className="bg-white text-black rounded-3xl px-6 w-full -z-10">
         <div className="flex flex-col justify-center gap-3 mb-8">
           {answersFinal ? (
             <>
@@ -118,7 +118,7 @@ const Question: React.FC<
                 Answer
               </label>
               <textarea
-                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light h-[26rem]"
+                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light h-[26rem] border border-[#A5A5A5]"
                 placeholder={"Füge hier deine Antwort ein..."}
                 id={question}
                 value={text}
@@ -155,8 +155,8 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
     router.push(`/game/question/${(parseInt(id) + 1).toString()}`);
   };
 
-  return (
-    <>
+  if (open) {
+    return (
       <Feedback
         isCorrect={isCorrect}
         open={open}
@@ -169,6 +169,11 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
       >
         {question.background}
       </Feedback>
+    );
+  }
+
+  return (
+    <>
       <div className="">
         <Question
           question={question.question}
