@@ -13,7 +13,7 @@ export const Feedback: React.FC<
 > = ({ open, isCorrect, onClick, children, question }) => {
   return (
     <dialog open={open} className="bg-white h-[100vh] w-screen">
-      <div className="flex flex-col gap-8 h-full justify-center items-center px-6 mt-8">
+      <div className="flex flex-col gap-8 h-full items-center px-6 mt-16">
         <span className="font-bold text-4xl text-center">
           {isCorrect ? (
             <>Du bist Champion der Demokratie!</>
