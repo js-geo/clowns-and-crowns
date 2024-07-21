@@ -71,7 +71,7 @@ const Question: React.FC<
       {answersFinal && (
         <div className="flex flex-col items-center">
           <svg
-            className="size-20 my-8"
+            className="size-12 my-4"
             viewBox="0 0 42 43"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ const Question: React.FC<
                 Answer
               </label>
               <textarea
-                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light h-[26rem] border border-[#A5A5A5]"
+                className=" focus:outline-[#3C50E1] rounded-lg p-4 drop-shadow-lg placeholder:text-[#A5A5A5] font-light h-[15rem] border border-[#cdcdcd]"
                 placeholder={"Füge hier deine Antwort ein..."}
                 id={question}
                 value={text}
@@ -151,9 +151,7 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
     setOpen(true);
   };
 
-  const handleNextQuestion = () => {
-    router.push(`/game/question/${(parseInt(id) + 1).toString()}`);
-  };
+  router.prefetch(`/game/question/${(parseInt(id) + 1).toString()}`);
 
   if (open) {
     return (
@@ -163,7 +161,7 @@ export const Quiz: React.FC<QuizProps> = ({ question, answer, id }) => {
         onClick={() => {
           setOpen(false);
           setIsCorrect(false);
-          handleNextQuestion();
+          router.push(`/game/question/${(parseInt(id) + 1).toString()}`);
         }}
         question={question}
       >
